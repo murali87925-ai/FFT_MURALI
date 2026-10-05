@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title>Grade Calculator</title>
+<style>
+    *{
+      border-radius: 10px;
+    }
+    h1{
+        text-align: center;
+h2{
+    text-align: center;
+}
+div{
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <div class="container" style="border: 2px solid black; padding: 20px; margin: 20px;"">
+        <h1>📊 Grade Calculator</h1>
+        <div class="section">
+            <h2>Student Information</h2><br>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Enter student name"><br><br>
+            <label for="rollno">Roll Number:</label>
+            <input type="text" id="rollno" placeholder="Enter roll number"><br><br>
+            <label for="class">Class:</label>
+            <input type="text" id="class" placeholder="Enter class"><br><br>
+         <form>
+            <h1 id:second>Student Result </h1>
+            <label>EFT:</label>
+            <input type="number" name="a1" id="i1" ><br><br>
+            <label>AUI:</label>
+            <input type="number" name="a2" id="i2" ><br><br>
+            <label>BAD:</label>
+            <input type="number" name="a3" id="i3"><br><br>
+            <label>ADS:</label>
+            <input type="number" name="a4" id="i4" ><br><br>
+            <label>PST:</label>
+            <input type="number" name="a5" id="i5" ><br><br>
+            <button type="button" onclick="check()">Result</button>
+            <p id = "para"></p>
+        </form>
+         <script>
+            function check(){
+    let a1 = Number(document.getElementById("i1").value);
+    let a2 = Number(document.getElementById("i2").value);
+    let a3 = Number(document.getElementById("i3").value);
+    let a4 = Number(document.getElementById("i4").value);
+    let a5 = Number(document.getElementById("i5").value);
+    let total = a1 + a2 + a3 + a4 + a5;
+    let average = total / 5;
+    let percentage = (total / 500) * 100;
+    let grade;
+    if (average >= 80) {
+        grade = "A";
+    } else if (average >= 60) {
+        grade = "B";
+    } else if (average >= 40) {
+        grade = "C";
+    } else if (average >= 35) {
+        grade = "D";
+    } else {
+        grade = "F";
+    }
+    let status;
+    if (average >= 40) {
+        status = "Pass";
+    } else {
+        status = "Fail";
+    }
+    document.getElementById("para").innerHTML =
+        "<h1>Student Details</h1>" +
+        "<br>" +
+        "EFT: " + a1 + "<br>" +
+        "AUI: " + a2 + "<br>" +
+        "BAD: " + a3 + "<br>" +
+        "ADS: " + a4 + "<br>" +
+        "PST: " + a5 + "<br>" +
+        "Total: " + total + "<br>" +
+        "Percentage: " + percentage.toFixed(2) + "%<br>" +
+        "Grade: " + grade + "<br>" +
+        "Average: " + average.toFixed(2) + "<br>" +
+        "Status: " + status;
+} 
+         </script>
+    </body>
+</html>

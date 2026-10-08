@@ -1,0 +1,190 @@
+<html>
+<head>
+  <title>To-Do List</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #870909;
+    }
+
+    .box {
+      width: 400px;
+      margin: 50px auto;
+      background-color: rgb(125, 90, 90);
+      padding: 20px;
+      border: 1px solid rgb(89, 14, 14);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #taskInput {
+      width: 70%;
+      padding: 6px;
+    }
+
+    button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .filters {
+      margin: 15px 0;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li button {
+      float: right;
+      margin-left: 5px;
+    }
+
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>My To-Do List</h1>
+
+    <div class="add">
+      <input type="text" id="taskInput" placeholder="Enter a task">
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <div class="filters">
+      <button onclick="setFilter('all')">All</button>
+      <button onclick="setFilter('pending')">Pending</button>
+      <button onclick="setFilter('completed')">Completed</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <p id="count"></p>
+    <button onclick="clearCompleted()">Clear Completed</button>
+  </div>
+
+  <script>
+    var tasks = [];
+    var currentFilter = "all";
+    var saved = localStorage.getItem("tasks");
+    if (saved != null) {
+      tasks = JSON.parse(saved);
+    }
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+    function addTask() {
+      var input = document.getElementById("taskInput");
+      var text = input.value;
+
+      if (text == "") {
+        alert("Please enter a task");
+        return;
+      }
+
+      var task = {
+        text: text,
+        completed: false
+      };
+
+      tasks.push(task);
+      input.value = "";
+      saveTasks();
+      showTasks();
+    }
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+      showTasks();
+    }
+
+    // edit a task
+    function editTask(index) {
+      var newText = prompt("Edit your task:", tasks[index].text);
+      if (newText != null && newText != "") {
+        tasks[index].text = newText;
+        saveTasks();
+        showTasks();
+      }
+    }
+    function toggleTask(index) {
+      tasks[index].completed = !tasks[index].completed;
+      saveTasks();
+      showTasks();
+    }
+
+    // change the filter
+    function setFilter(f) {
+      currentFilter = f;
+      showTasks();
+    }
+    function clearCompleted() {
+      var newTasks = [];
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].completed == false) {
+          newTasks.push(tasks[i]);
+        }
+      }
+      tasks = newTasks;
+      saveTasks();
+      showTasks();
+    }
+
+    function showTasks() {
+      var list = document.getElementById("taskList");
+      list.innerHTML = "";
+
+      var pendingCount = 0;
+
+      for (var i = 0; i < tasks.length; i++) {
+        var task = tasks[i];
+
+        if (task.completed == false) {
+          pendingCount++;
+        }
+        if (currentFilter == "pending" && task.completed == true) {
+          continue;
+        }
+        if (currentFilter == "completed" && task.completed == false) {
+          continue;
+        }
+
+        var li = document.createElement("li");
+
+        var checked = "";
+        var cls = "";
+        if (task.completed) {
+          checked = "checked";
+          cls = "done";
+        }
+
+        li.innerHTML =
+          '<input type="checkbox" ' + checked + ' onclick="toggleTask(' + i + ')"> ' +
+          '<span class="' + cls + '">' + task.text + '</span>' +
+          '<button onclick="deleteTask(' + i + ')">Delete</button>' +
+          '<button onclick="editTask(' + i + ')">Edit</button>';
+
+        list.appendChild(li);
+      }
+
+      document.getElementById("count").innerHTML =
+        "Total: " + tasks.length + " | Pending: " + pendingCount;
+    }
+    showTasks();
+  </script>
+</body>
+</html>

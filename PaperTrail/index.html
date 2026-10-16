@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover beautiful notebooks, pens and art supplies at PaperTrail.">
+  <title>PaperTrail | Stationery for Every Story</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://images.unsplash.com">
+</head>
+<body>
+
+  <div class="announcement">
+    ✦ LITTLE THINGS, BIG INSPIRATION ✦ &nbsp; Free delivery on orders above ₹499
+  </div>
+
+  <header class="header">
+    <a class="logo" href="#home">paper<span>trail.</span></a>
+
+    <nav class="navigation">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">Our Story</a>
+    </nav>
+
+    <a class="cart-link" href="#cart">
+      Bag <span id="cart-count">0</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">YOUR EVERYDAY DOSE OF CREATIVITY</span>
+        <h1>Make room for<br>little <em>ideas.</em></h1>
+        <p>
+          Thoughtful stationery for big dreams, quiet mornings
+          and everything you want to create.
+        </p>
+        <a class="primary-btn" href="#shop">Explore the collection ↗</a>
+
+        <div class="hero-note">
+          <span>✳</span> Made for dreamers, thinkers & doers.
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85"
+          alt="Beautiful stationery and writing essentials">
+        <div class="floating-note">
+          <span>your next</span>
+          <strong>great idea ✎</strong>
+        </div>
+        <span class="hero-decoration">EST. 2026</span>
+      </div>
+    </section>
+
+    <section class="category-section" id="categories">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">FIND YOUR FAVOURITE</span>
+          <h2>A little something for <em>everyone.</em></h2>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card" data-category="Notebooks">
+          <span class="category-icon">📓</span>
+          <span>Notebooks</span>
+          <span class="category-arrow">↗</span>
+        </button>
+        <button class="category-card" data-category="Writing">
+          <span class="category-icon">🖊️</span>
+          <span>Pens & Writing</span>
+          <span class="category-arrow">↗</span>
+        </button>
+        <button class="category-card" data-category="Art">
+          <span class="category-icon">🎨</span>
+          <span>Art & Creativity</span>
+          <span class="category-arrow">↗</span>
+        </button>
+        <button class="category-card" data-category="Office">
+          <span class="category-icon">📌</span>
+          <span>Office Essentials</span>
+          <span class="category-arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="shop-heading">
+        <div>
+          <span class="eyebrow">THE PAPERTRAIL EDIT</span>
+          <h2>Things you'll <em>love.</em></h2>
+          <p class="muted">Everyday essentials, chosen with care.</p>
+        </div>
+        <span class="product-count" id="product-count">8 products</span>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="All">All items</button>
+          <button class="filter-btn" data-filter="Notebooks">Notebooks</button>
+          <button class="filter-btn" data-filter="Writing">Writing</button>
+          <button class="filter-btn" data-filter="Art">Art</button>
+          <button class="filter-btn" data-filter="Office">Office</button>
+        </div>
+
+        <select id="sort-products" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="low">Price: Low to high</option>
+          <option value="high">Price: High to low</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="story-section" id="about">
+      <div class="story-symbol">✳</div>
+      <div>
+        <span class="eyebrow">A NOTE FROM US</span>
+        <h2>Good stationery.<br><em>Better everyday moments.</em></h2>
+      </div>
+      <p>
+        At PaperTrail, we believe the right notebook, a favourite pen,
+        or a splash of colour can make an ordinary day feel special.
+        Find your next favourite thing with us.
+      </p>
+    </section>
+
+    <section class="cart-section" id="cart">
+      <div class="cart-heading">
+        <div>
+          <span class="eyebrow">YOUR LITTLE COLLECTION</span>
+          <h2>Your shopping <em>bag.</em></h2>
+        </div>
+        <span class="cart-label" id="cart-label">0 items</span>
+      </div>
+
+      <div class="cart-layout">
+        <div class="cart-items" id="cart-items">
+          <div class="empty-cart">
+            <span>🛍️</span>
+            <h3>Your bag is waiting for inspiration.</h3>
+            <p>Find something lovely in our collection.</p>
+            <a class="primary-btn" href="#shop">Explore products</a>
+          </div>
+        </div>
+
+        <aside class="cart-summary">
+          <h3>Order summary</h3>
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0</span>
+          </div>
+          <div class="summary-line">
+            <span>Delivery</span>
+            <span id="delivery">₹0</span>
+          </div>
+          <p class="shipping-note" id="shipping-note">
+            Add products to see delivery charges.
+          </p>
+          <div class="summary-total">
+            <strong>Total</strong>
+            <strong id="grand-total">₹0</strong>
+          </div>
+          <button id="checkout-btn" class="primary-btn checkout-btn">
+            Place demo order ↗
+          </button>
+          <p class="demo-note">Student demo only · No real payment</p>
+          <button id="clear-cart" class="clear-btn">Clear shopping bag</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo footer-logo" href="#home">paper<span>trail.</span></a>
+    <p>For every thought worth putting on paper.</p>
+    <span>© 2026 PaperTrail · Student Project</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="product-dialog" class="product-dialog">
+    <button class="dialog-close" id="dialog-close" aria-label="Close">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
